@@ -648,4 +648,31 @@ function autorInfoPopUp() {?>
 	</div>
 <?php }
 
+/*****************************************************************/
+/*********************** SERIE TUTORIALES *******************/
+/*****************************************************************/
+function muestra_product_serie($id_posts) {
+	$post_id = split(",", $id_posts);?>
+	
+	<section class="content-post-serie">
+		<h3 class="title_section">Artículos en esta serie:</h3>
+		<ul class="list-post-series">
 
+		<?php foreach ($post_id as $id) {
+			$post 	= get_post($id);
+			$titulo = $post->post_title;		
+			$imagen = get_the_post_thumbnail( $id, 'thumbnail', array( 'class' => '"img-thumbnail img-responsive' ) );
+			$link 	= get_permalink( $id, false );
+		?>
+			<li>
+				<a href="<?php echo $link;?>" title="<?php echo $titulo;?>">
+					<figure class="block-center"><?php echo $imagen;?></figure>
+					<h3 class=""><?php echo $titulo;?></h3>
+				</a>	
+			</li>
+		<?php }?>
+		</ul>
+	</section>
+<?php }
+
+								

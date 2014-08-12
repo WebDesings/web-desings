@@ -7,7 +7,9 @@
  * @since Twenty Fourteen 1.0
  */
 
-get_header(); ?>
+get_header(); 
+
+	?>
 
 	<div id="primary" class="content-area col-sm-8">
 		<div id="content" class="site-content" role="main">
@@ -21,7 +23,16 @@ get_header(); ?>
 					 * (where ___ is the post format) and that will be used instead.
 					 */
 					get_template_part( 'content', get_post_format() );?>
-					<div class="aseparator"></div>
+					
+					<?php 
+						$post_serie = get_post_meta( $post->ID, 'serie_post_child', true );
+						if(in_category('series') &&  $post_serie != '') {?>
+							<?php muestra_product_serie($post_serie);?>
+
+					<?php }?>
+		
+
+					<div class="separator"></div>
 					<footer class="after-single-content">
 						<p>¿Que te ha parecido este artículo? Dejanos tu valoración...
 							<?php if(function_exists('the_ratings')) { the_ratings(); } ?></p>
@@ -78,8 +89,10 @@ get_header(); ?>
 							endwhile;
 						?>
 					</section>
+
 		</div><!-- #content -->
 	</div><!-- #primary -->
+
 
 <?php
 get_sidebar('single-sidebar');
