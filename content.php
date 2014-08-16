@@ -59,7 +59,9 @@
 	</header><!-- .entry-header -->
 	<div class="entry-meta-bottom">
 		<!-- Go to www.addthis.com/dashboard to customize your tools -->
-		<div class="addthis_native_toolbox share-this-post clearfix"></div>
+		<div class="share-this-post clearfix">
+			<?php echo do_shortcode('[easy-share buttons="facebook,twitter,google,linkedin,print" counters=1 native="no" total_counter_pos="leftbig"]');?>
+		</div>
 	</div>
 
 	<?php if ( is_search() ) : ?>
